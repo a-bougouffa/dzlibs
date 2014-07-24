@@ -3,15 +3,16 @@
 * 
 */
 class Parser { 
+	define($APILVL, 0);
 
 	// static method to parse the given url and store it in $request
 	static function parse($url, $request) {
 		$url = trim($url, '/');
 		$params = explode('/', $url);
-		$request->service = $params[0];
+		$request->service = $params[$APILVL+0];
 		if (strtolower($request->service) == 'data') {
-			if (isset($params[1])) {
-				$request->table = $params[1];
+			if (isset($params[$APILVL+1])) {
+				$request->table = $params[$APILVL+1];
 			} else {
 				//print all available resource names
 			}
